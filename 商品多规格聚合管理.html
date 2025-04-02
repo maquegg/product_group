@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!-- saved from url=(0105)file:///Users/maque/learning/code/%E5%95%86%E5%93%81%E5%88%86%E7%BB%84_%E5%89%AF%E6%9C%AC/demo/index.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品多规格聚合管理</title>
+    <!-- 引入Ant Design样式 -->
+    <link rel="stylesheet" href="./商品多规格聚合管理_files/reset.css">
+    <!-- 引入自定义样式 -->
+    <link rel="stylesheet" href="./商品多规格聚合管理_files/styles.css">
+</head>
+<body>
+    <div id="app">
+        <div class="page-container">
+            <div class="layout-wrapper">
+                <!-- 左侧分类导航 -->
+                <div class="category-sidebar">
+                    <div class="sidebar-header">
+                        <h3>商品分组分类</h3>
+                        <span class="config-icon" id="configCategories"><i class="icon-setting"></i></span>
+                    </div>
+                    <div class="category-list"><div class="category-item active" data-id="all" data-is-parent="false">
+        <div class="category-title">
+            
+            <span class="category-icon">📦</span>
+            <span class="category-name">全部分组</span>
+            <span class="category-count">3</span>
+        </div>
+    </div><div class="category-item parent-category" data-id="food" data-is-parent="true">
+        <div class="category-title">
+            <span class="expand-icon">▼</span>
+            <span class="category-icon">🍽️</span>
+            <span class="category-name">食品类</span>
+            <span class="category-count">1</span>
+        </div>
+    </div><div class="subcategory-container" style="display: block;"><div class="category-item child-category" data-id="fruit" data-is-parent="false">
+        <div class="category-title">
+            
+            <span class="category-icon">🍎</span>
+            <span class="category-name">水果类</span>
+            <span class="category-count">1</span>
+        </div>
+    </div><div class="category-item child-category" data-id="vegetable" data-is-parent="false">
+        <div class="category-title">
+            
+            <span class="category-icon">🥦</span>
+            <span class="category-name">蔬菜类</span>
+            <span class="category-count">0</span>
+        </div>
+    </div><div class="category-item child-category" data-id="drink" data-is-parent="false">
+        <div class="category-title">
+            
+            <span class="category-icon">🥤</span>
+            <span class="category-name">饮料类</span>
+            <span class="category-count">0</span>
+        </div>
+    </div></div><div class="category-item parent-category" data-id="electronics" data-is-parent="true">
+        <div class="category-title">
+            <span class="expand-icon">▼</span>
+            <span class="category-icon">💻</span>
+            <span class="category-name">电子产品</span>
+            <span class="category-count">2</span>
+        </div>
+    </div><div class="subcategory-container" style="display: block;"><div class="category-item child-category" data-id="digital" data-is-parent="false">
+        <div class="category-title">
+            
+            <span class="category-icon">📱</span>
+            <span class="category-name">数码类</span>
+            <span class="category-count">2</span>
+        </div>
+    </div><div class="category-item child-category" data-id="appliance" data-is-parent="false">
+        <div class="category-title">
+            
+            <span class="category-icon">🔌</span>
+            <span class="category-name">家电类</span>
+            <span class="category-count">0</span>
+        </div>
+    </div></div><div class="category-item add-category" id="addCategoryBtn">
+        <div class="category-title">
+            <span class="category-icon">+</span>
+            <span class="category-name">添加分类</span>
+        </div>
+    </div></div>
+                </div>
+                
+                <!-- 右侧内容区 -->
+                <div class="content-area">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>商品多规格聚合管理</h2>
+                        </div>
+                        <div class="search-area">
+                            <div class="search-row">
+                                <div class="search-item">
+                                    <span class="label">分组名称：</span>
+                                    <input type="text" id="searchName" placeholder="请输入分组名称">
+                                </div>
+                                <div class="search-item date-range">
+                                    <span class="label">创建时间：</span>
+                                    <input type="date" id="startDate">
+                                    <span class="separator">至</span>
+                                    <input type="date" id="endDate">
+                                </div>
+                                <div class="search-item buttons">
+                                    <button class="btn btn-primary" id="searchBtn"><i class="icon-search"></i>搜索</button>
+                                    <button class="btn" id="resetBtn">重置</button>
+                                    <button class="btn btn-primary" id="createBtn"><i class="icon-plus"></i>创建分组</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table id="groupsTable">
+                                <thead>
+                                    <tr>
+                                        <th>分组名称</th>
+                                        <th>描述</th>
+                                        <th>包含商品数</th>
+                                        <th>规格项</th>
+                                        <th>分类</th>
+                                        <th>创建时间</th>
+                                        <th>更新时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody><tr>
+            <td>iPhone 14 Pro 128GB</td>
+            <td>iPhone 14 Pro 128GB 全色系商品分组</td>
+            <td>4</td>
+            <td>存储容量(128GB)，颜色(深空黑色、银色、金色、深紫色)</td>
+            <td>数码类</td>
+            <td>2023-01-15 10:30:00</td>
+            <td>2023-01-15 10:30:00</td>
+            <td>
+                <button class="btn" data-id="1" onclick="editGroup(&#39;1&#39;)">编辑</button>
+                <button class="btn" data-id="1" onclick="deleteGroup(&#39;1&#39;)">删除</button>
+            </td>
+        </tr><tr>
+            <td>iPhone 14 Pro 256GB</td>
+            <td>iPhone 14 Pro 256GB 全色系商品分组</td>
+            <td>4</td>
+            <td>存储容量(256GB)，颜色(深空黑色、银色、金色、深紫色)</td>
+            <td>数码类</td>
+            <td>2023-01-15 11:20:00</td>
+            <td>2023-01-16 09:15:00</td>
+            <td>
+                <button class="btn" data-id="2" onclick="editGroup(&#39;2&#39;)">编辑</button>
+                <button class="btn" data-id="2" onclick="deleteGroup(&#39;2&#39;)">删除</button>
+            </td>
+        </tr><tr>
+            <td>奶茶多口味系列</td>
+            <td>奶茶多口味多温度系列商品分组</td>
+            <td>4</td>
+            <td>口味(蜜桃味、苹果味)，温度(常温、冷藏)</td>
+            <td>水果类</td>
+            <td>2023-01-20 14:30:00</td>
+            <td>2023-01-20 14:30:00</td>
+            <td>
+                <button class="btn" data-id="3" onclick="editGroup(&#39;3&#39;)">编辑</button>
+                <button class="btn" data-id="3" onclick="deleteGroup(&#39;3&#39;)">删除</button>
+            </td>
+        </tr></tbody>
+                            </table>
+                            <div class="pagination">
+                                <span>共 <span id="totalCount">3</span> 条</span>
+                                <ul class="page-numbers">
+                                    <li class="disabled">&lt;</li>
+                                    <li class="active">1</li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                    <li>&gt;</li>
+                                </ul>
+                                <select id="pageSize">
+                                    <option value="10">10条/页</option>
+                                    <option value="20">20条/页</option>
+                                    <option value="50">50条/页</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 创建分组模态框 -->
+    <div class="modal" id="createModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="modalTitle">创建商品分组</h3>
+                <span class="close" id="closeModal">×</span>
+            </div>
+            <div class="modal-body">
+                <form id="groupForm">
+                    <div class="form-item">
+                        <label for="groupName">分组名称 <span class="required">*</span></label>
+                        <input type="text" id="groupName" required="" placeholder="请输入分组名称">
+                    </div>
+                    <div class="form-item">
+                        <label for="groupDesc">分组描述</label>
+                        <textarea id="groupDesc" rows="4" placeholder="请输入分组描述"></textarea>
+                    </div>
+                    
+                    <!-- 规格项设置 -->
+                    <div class="form-item spec-settings">
+                        <div class="item-header">
+                            <label>规格项设置</label>
+                            <span class="help-text">最多可添加3个规格项</span>
+                        </div>
+                        <div id="specItems" class="spec-items-container">
+                            <div class="spec-row">
+                                <button type="button" class="btn btn-primary btn-add-spec" id="addSpecBtn"><i class="icon-plus"></i>添加规格项</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 规格矩阵 -->
+                    <div class="form-item">
+                        <div class="item-header">
+                            <label>规格矩阵</label>
+                            <span class="help-text">请为每个规格组合绑定对应商品</span>
+                        </div>
+                        <div id="specMatrix" class="spec-matrix">
+                            <p class="no-specs">请先添加规格项和规格值</p>
+                            <table id="matrixTable" style="display: none;" class="matrix-table">
+                                <thead>
+                                    <!-- 表头将由JavaScript动态生成 -->
+                                </thead>
+                                <tbody>
+                                    <!-- 规格矩阵将由JavaScript动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- 关联商品 -->
+                    <div class="form-item">
+                        <div class="item-header">
+                            <label>已关联商品</label>
+                            <button type="button" class="btn btn-link" id="expandGoodsBtn">展开</button>
+                        </div>
+                        <div class="selected-goods">
+                            <table id="selectedGoodsTable" class="goods-table">
+                                <thead>
+                                    <tr>
+                                        <th>商品图片</th>
+                                        <th>商品名称</th>
+                                        <th>SKU编码</th>
+                                        <th>价格</th>
+                                        <th>规格</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 已选商品将由JavaScript动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancelBtn">取消</button>
+                <button class="btn btn-primary" id="submitBtn">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 选择商品模态框 -->
+    <div class="modal" id="goodsSelector">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>选择商品</h3>
+                <span class="close" id="closeGoodsSelector">×</span>
+            </div>
+            <div class="modal-body">
+                <div class="search-row">
+                    <div class="search-item">
+                        <input type="text" id="goodsNameSearch" placeholder="商品名称">
+                    </div>
+                    <div class="search-item">
+                        <input type="text" id="skuCodeSearch" placeholder="SKU编码">
+                    </div>
+                    <div class="search-item">
+                        <button class="btn btn-primary" id="searchGoodsBtn"><i class="icon-search"></i>搜索</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="goodsTable">
+                        <thead>
+                            <tr>
+                                <th width="30"><input type="checkbox" id="selectAll"></th>
+                                <th>商品图片</th>
+                                <th>商品名称</th>
+                                <th>SKU编码</th>
+                                <th>价格</th>
+                                <th>规格</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 商品列表将由JavaScript动态生成 -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="selected-info">
+                    已选择 <span id="selectedCount">0</span> 个商品
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancelSelectBtn">取消</button>
+                <button class="btn btn-primary" id="confirmSelectBtn">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加规格项模态框 -->
+    <div class="modal" id="specItemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加规格项</h3>
+                <span class="close" id="closeSpecItemModal">×</span>
+            </div>
+            <div class="modal-body">
+                <form id="specItemForm">
+                    <div class="form-item">
+                        <label for="specName">规格项名称 <span class="required">*</span></label>
+                        <input type="text" id="specName" required="" placeholder="如：颜色、尺寸、口味等">
+                        <div class="preset-specs">
+                            <label class="preset-label">预制规格项：</label>
+                            <div class="preset-tags" id="presetSpecTags">
+                                <!-- 预制规格项标签将由JavaScript动态生成 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <label>规格值 <span class="required">*</span></label>
+                        <div class="spec-values">
+                            <div class="spec-value-row">
+                                <input type="text" class="spec-value" placeholder="请输入规格值">
+                                <button type="button" class="btn btn-icon remove-value" style="display: none;">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-text" id="addValueBtn"><i class="icon-plus"></i>添加规格值</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancelSpecBtn">取消</button>
+                <button class="btn btn-primary" id="confirmSpecBtn">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 遮罩层 -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- 引入JavaScript -->
+    <script src="./商品多规格聚合管理_files/script.js"></script>
+
+ </body></html>
